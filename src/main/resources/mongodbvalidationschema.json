@@ -1,0 +1,83 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "productname",
+      "url",
+      "mostrecentlisting",
+      "requiredkeywords, blacklistedkeywords, maxviableprice, maxrealisticprice, productlistings"
+    ],
+    "properties": {
+      "productname": {
+        "bsonType": "string",
+        "description": "productname is required. Must be a string"
+      },
+      "url": {
+        "bsonType": "string",
+        "description": "url is required. Must be a string"
+      },
+      "mostrecentlisting": {
+        "bsonType": "date",
+        "description": "mostrecentlisting is required. Must be a date"
+      },
+      "requiredkeywords": {
+        "bsonType": "array",
+        "description": "requiredkeywords is required. Must be an array of strings",
+        "items": {
+          "bsonType": "string",
+          "description": ""
+        }
+      },
+      "blacklistedkeywords": {
+        "bsonType": "array",
+        "description": "blacklistedkeywords is required. Must be an array of strings",
+        "items": {
+          "bsonType": "string",
+          "description": ""
+        }
+      },
+      "maxviableprice": {
+        "bsonType": "double",
+        "description": "maxviableprice is required. Must be a double. Can't be negative",
+        "minimum": 0
+      },
+      "maxrealisticprice": {
+        "bsonType": "double",
+        "description": "maxvrealisticprice is required. Must be a double. Can't be negative",
+        "minimum": 0
+      },
+      "productlistings": {
+        "bsonType": "array",
+        "description": "",
+        "items": {
+          "bsonType": "object",
+          "required": [
+            "listingdate",
+            "listingurl",
+            "price",
+            "isbuyable"
+          ],
+          "properties": {
+            "listingdate": {
+              "bsonType": "date",
+              "description": "listingdate is required. Must be a date"
+            },
+            "listingurl": {
+              "bsonType": "string",
+              "description": "listingurl is required. Must be a string"
+            },
+            "price": {
+              "bsonType": "double",
+              "description": "price is required. Must be a double. Can't be negative",
+              "minimum": 0
+            },
+            "isbuyable": {
+              "bsonType": "bool",
+              "description": "isbuyable is required. Must be a bool"
+            }
+          }
+        }
+      }
+    }
+  }
+}
