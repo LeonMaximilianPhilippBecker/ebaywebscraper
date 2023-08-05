@@ -1,15 +1,16 @@
 package com.leon.ebaywebscraper.dto;
 
-import java.util.Date;
-import lombok.Builder;
+import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@Builder
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ProductListing {
 
   private String listingUrl;
-  private Date listingDate;
+  private LocalDateTime listingDate;
   private double price;
   private boolean isBuyable;
 }

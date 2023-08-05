@@ -1,6 +1,6 @@
 package com.leon.ebaywebscraper.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +16,7 @@ public class Product {
   private String productId;
   private String productName;
   private String productUrl;
-  private Date mostRecentListingDate;
+  private LocalDateTime mostRecentListingDate;
   private List<String> requiredKeywords;
   private List<String> blackListedKeywords;
   private double maxViablePrice;
