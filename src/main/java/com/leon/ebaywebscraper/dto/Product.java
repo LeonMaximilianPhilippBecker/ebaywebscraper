@@ -2,21 +2,22 @@ package com.leon.ebaywebscraper.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import lombok.Builder;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "products")
 @Data
-@Builder
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class Product {
 
   @Id
-  private String productId;
-  private String productName;
-  private String productUrl;
-  private LocalDateTime mostRecentListingDate;
+  public String productId;
+  public String productName;
+  public String productUrl;
+  public LocalDateTime mostRecentListingDate;
   private List<String> requiredKeywords;
   private List<String> blackListedKeywords;
   private double maxViablePrice;

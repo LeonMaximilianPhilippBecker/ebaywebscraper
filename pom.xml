@@ -39,6 +39,11 @@
     </dependency>
 
     <dependency>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+
+    <dependency>
       <artifactId>jsoup</artifactId>
       <groupId>org.jsoup</groupId>
       <version>1.16.1</version>
@@ -69,6 +74,12 @@
       <artifactId>jsr305</artifactId>
       <groupId>com.google.code.findbugs</groupId>
       <version>3.0.2</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>twilio</artifactId>
+      <groupId>com.twilio.sdk</groupId>
+      <version>8.20.0</version>
     </dependency>
   </dependencies>
 

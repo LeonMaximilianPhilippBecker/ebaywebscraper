@@ -44,7 +44,7 @@ public class WebScraperImpl implements WebScraper {
     return null;
   }
 
-  final Document fetchWebPage(String url) {
+  Document fetchWebPage(String url) {
     try {
       Document webPage = Jsoup.connect(url).get();
       return webPage;
@@ -53,7 +53,7 @@ public class WebScraperImpl implements WebScraper {
     }
   }
 
-  private final ProductListing createProductListingFromScrapedHTML(Element element) {
+  private ProductListing createProductListingFromScrapedHTML(Element element) {
     final Double price = getProductListingPrice(element);
     final LocalDateTime date = getProductListingDate(element);
 
@@ -61,7 +61,7 @@ public class WebScraperImpl implements WebScraper {
     return productListing;
   }
 
-  private final Double getProductListingPrice(Element element) {
+  private Double getProductListingPrice(Element element) {
     String priceString = element.selectFirst("p." + PRODUCTLISTING_PRICE_P_CLASS).text();
     String cleanedPriceString = priceString.replaceAll("[^0-9.,]", "").replace(',', '.');
     try {
@@ -73,7 +73,7 @@ public class WebScraperImpl implements WebScraper {
     }
   }
 
-  private final LocalDateTime getProductListingDate(Element element) {
+  private LocalDateTime getProductListingDate(Element element) {
     final Element someElement = element.selectFirst("div." + PRODUCTLISTING_LISTINGDATE_DIV_CLASS);
     final Element iElement = element.selectFirst("div." + PRODUCTLISTING_LISTINGDATE_DIV_CLASS)
         .selectFirst("i");

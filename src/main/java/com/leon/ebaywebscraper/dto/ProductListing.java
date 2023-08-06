@@ -13,4 +13,14 @@ public class ProductListing {
   private LocalDateTime listingDate;
   private double price;
   private boolean isBuyable;
+
+  @Override
+  public String toString() {
+    return "ProductListing{" +
+        "listingUrl='" + listingUrl + '\'' +
+        ", listingDate=" + listingDate +
+        ", price=" + price +
+        ", isBuyable=" + isBuyable +
+        '}';
+  }
 }

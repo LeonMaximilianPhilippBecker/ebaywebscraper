@@ -32,7 +32,7 @@ public class WebScraperTest {
 
     ProductListing actualResult = webScraperMock.scrape("");
 
-    Assertions.assertTrue(expectedResult.equals(actualResult));
+    Assertions.assertEquals(expectedResult, actualResult);
 
   }
 
@@ -46,7 +46,7 @@ public class WebScraperTest {
 
   }
 
-  private final Document getExampleDocument() {
+  private Document getExampleDocument() {
     String pathName = "C:/Users/Leon/Desktop/ebaywebscraper/src/test/resources/ScrapedHtmlPageExample.html";
     File htmlFile = new File(pathName);
     try {
