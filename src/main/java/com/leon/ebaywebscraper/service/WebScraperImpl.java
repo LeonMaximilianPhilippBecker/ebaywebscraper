@@ -15,12 +15,18 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WebScraperImpl implements WebScraper {
 
   private static final String PRODUCTLISTINGS_UL_ID = "srchrslt-adtable";
   private static final String PRODUCTLISTING_PRICE_P_CLASS = "aditem-main--middle--price-shipping--price";
   private static final String PRODUCTLISTING_LISTINGDATE_DIV_CLASS = "aditem-main--top--right";
+
+  public WebScraperImpl() {
+    System.out.println("WebScraperImpl running");
+  }
 
   @Override
   public ProductListing scrape(String url) {
@@ -49,6 +55,8 @@ public class WebScraperImpl implements WebScraper {
       Document webPage = Jsoup.connect(url).get();
       return webPage;
     } catch (IOException e) {
+      System.out.println("Trying to fetch webpage with Jsoup for url " + url + " failed");
+      e.printStackTrace();
       return null;
     }
   }

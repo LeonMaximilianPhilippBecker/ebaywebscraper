@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
 
-  void deleteByProductName(String productName);
+  void deleteByProductname(String productName);
 
-  Product findProductByProductName(String productName);
+  Product findProductByProductname(String productName);
 
   @Override
   List<Product> findAll();

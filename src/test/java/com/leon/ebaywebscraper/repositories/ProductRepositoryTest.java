@@ -28,7 +28,7 @@ public class ProductRepositoryTest {
     Product insertedProduct = getProductFromIndex(1);
     productRepository.insert(insertedProduct);
 
-    Optional<Product> fetchedProduct = productRepository.findById(insertedProduct.getProductId());
+    Optional<Product> fetchedProduct = productRepository.findById(insertedProduct.getProductid());
 
     Assertions.assertTrue(fetchedProduct.isPresent());
     Assertions.assertEquals(insertedProduct, fetchedProduct.get());
@@ -38,12 +38,12 @@ public class ProductRepositoryTest {
   public void save_Works() {
     Product insertedProduct = getProductFromIndex(1);
     productRepository.insert(insertedProduct);
-    insertedProduct.setProductName("changed Name");
+    insertedProduct.setProductname("changed Name");
     productRepository.save(insertedProduct);
 
-    Product updatedProduct = productRepository.findById(insertedProduct.getProductId()).get();
+    Product updatedProduct = productRepository.findById(insertedProduct.getProductid()).get();
 
-    Assertions.assertEquals("changed Name", updatedProduct.getProductName());
+    Assertions.assertEquals("changed Name", updatedProduct.getProductname());
   }
 
   @Test
@@ -61,9 +61,9 @@ public class ProductRepositoryTest {
     Product insertedProduct = getProductFromIndex(1);
     productRepository.insert(insertedProduct);
 
-    productRepository.deleteByProductName(insertedProduct.getProductName());
+    productRepository.deleteByProductname(insertedProduct.getProductname());
     Optional<Product> nonExistentProduct = productRepository.findById(
-        insertedProduct.getProductId());
+        insertedProduct.getProductid());
 
     Assertions.assertTrue(nonExistentProduct.isEmpty());
   }
@@ -73,8 +73,8 @@ public class ProductRepositoryTest {
     Product insertedProduct = getProductFromIndex(1);
     productRepository.insert(insertedProduct);
 
-    Product fetchedProduct = productRepository.findProductByProductName(
-        insertedProduct.getProductName());
+    Product fetchedProduct = productRepository.findProductByProductname(
+        insertedProduct.getProductname());
 
     Assertions.assertNotNull(fetchedProduct);
     Assertions.assertEquals(insertedProduct, fetchedProduct);

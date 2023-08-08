@@ -3,7 +3,7 @@ package com.leon.ebaywebscraper.service;
 import com.leon.ebaywebscraper.dto.Product;
 import com.leon.ebaywebscraper.dto.ProductListing;
 import com.leon.ebaywebscraper.repositories.ProductRepository;
-import java.util.Comparator;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import lombok.SneakyThrows;
@@ -46,23 +46,25 @@ public class ProductListingConsumerRunnable implements Runnable {
   }
 
   private void scrapeAndProcess(final Product product) {
-    final ProductListing newlyscrapedProductListing = webScraper.scrape(product.getProductUrl());
-    final ProductListing mostRecentlyScrapedProductListing = productRepository
-        .findProductByProductName(product.getProductName())
-        .getProductListings()
-        .stream()
-        .max(Comparator.comparing(ProductListing::getListingDate)).get();
+    final ProductListing newlyscrapedProductListing = webScraper.scrape(product.getUrl());
+    final LocalDateTime mostRecentlyScrapedProductListingDate = productRepository
+        .findProductByProductname(product.getProductname())
+        .getMostrecentlistingdate();
 
-    if (!newlyscrapedProductListing.getListingDate()
-        .isAfter(mostRecentlyScrapedProductListing.getListingDate())) {
+    if (newlyscrapedProductListing == null) {
       return;
     }
-    product.getProductListings().add(newlyscrapedProductListing);
-    productRepository.save(product);
-    if (newlyscrapedProductListing.getPrice() <= product.getMaxViablePrice()) {
-      messenger.sendProductListingAlert(newlyscrapedProductListing);
-    }
 
+    if (newlyscrapedProductListing.getListingdate()
+        .isAfter(mostRecentlyScrapedProductListingDate)) {
+      product.getProductlistings().add(newlyscrapedProductListing);
+      product.setMostrecentlistingdate(newlyscrapedProductListing.getListingdate());
+      productRepository.save(product);
+
+      if (newlyscrapedProductListing.getPrice() <= product.getMaxviableprice()) {
+        messenger.sendProductListingAlert(newlyscrapedProductListing);
+      }
+    }
   }
 
 

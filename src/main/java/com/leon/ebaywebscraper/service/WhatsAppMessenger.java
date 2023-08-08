@@ -4,24 +4,19 @@ import com.leon.ebaywebscraper.dto.ProductListing;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 
-
-@Component
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class WhatsAppMessenger implements Messenger {
 
-  @Value("${twilio.account.sid}")
-  private String twilioAccountSid;
+  private final String twilioAccountSid;
 
-  @Value("${twilio.authtoken}")
-  private String twilioAuthToken;
+  private final String twilioAuthToken;
 
-  @Value("${twilio.sender.phonenumber}")
-  private String senderPhoneNumber;
+  private final String senderPhoneNumber;
 
-  @Value("${twilio.receiver.phonenumber}")
-  private String receiverPhoneNumber;
+  private final String receiverPhoneNumber;
 
   @Override
   public void sendProductListingAlert(final ProductListing productListing) {

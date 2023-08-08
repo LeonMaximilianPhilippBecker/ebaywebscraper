@@ -81,6 +81,12 @@
       <groupId>com.twilio.sdk</groupId>
       <version>8.20.0</version>
     </dependency>
+
+    <dependency>
+      <artifactId>validation-api</artifactId>
+      <groupId>javax.validation</groupId>
+      <version>2.0.1.Final</version>
+    </dependency>
   </dependencies>
 
   <groupId>com.leon</groupId>

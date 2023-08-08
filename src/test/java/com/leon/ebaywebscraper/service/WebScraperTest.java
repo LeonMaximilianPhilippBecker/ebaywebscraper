@@ -16,10 +16,13 @@ import org.junit.jupiter.api.Test;
 public class WebScraperTest {
 
   private final Document exampleDocument = getExampleDocument();
+  private final String url = "https://www.kleinanzeigen.de/s-wohnung-kaufen/altona/sortierung:preis/preis:1000:/wohnung/k0c196l9497r50";
 
   @Test
   public void test() {
-    System.out.println(exampleDocument);
+    WebScraperImpl webScraper = new WebScraperImpl();
+    Document document = webScraper.fetchWebPage(url);
+    System.out.println(document);
   }
 
   @Test
@@ -33,7 +36,6 @@ public class WebScraperTest {
     ProductListing actualResult = webScraperMock.scrape("");
 
     Assertions.assertEquals(expectedResult, actualResult);
-
   }
 
   @Test

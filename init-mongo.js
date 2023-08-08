@@ -10,7 +10,7 @@ db.createCollection(collectionName, {
       required: [
         "productname",
         "url",
-        "mostrecentlisting",
+        "mostrecentlistingdate",
         "requiredkeywords", "blacklistedkeywords", "maxviableprice", "maxrealisticprice", "productlistings"
       ],
       properties: {
@@ -22,9 +22,9 @@ db.createCollection(collectionName, {
           bsonType: "string",
           description: "url is required. Must be a string"
         },
-        mostrecentlisting: {
+        mostrecentlistingdate: {
           bsonType: "date",
-          description: "mostrecentlisting is required. Must be a date"
+          description: "mostrecentlistingdate is required. Must be a date"
         },
         requiredkeywords: {
           bsonType: "array",
@@ -93,7 +93,7 @@ db[collectionName].insertMany([
   {
     productname: "Ryzen 7 5800x",
     url: "https://www.kleinanzeigen.de/s-pc-zubehoer-software/preis:80:/ryzen-7-5800x/k0c225",
-    mostrecentlisting: new Date("2023-08-08T00:00:00Z"),
+    mostrecentlistingdate: new Date("2023-08-08T00:00:00Z"),
     requiredkeywords: ["5800x", "Ryzen"],
     blacklistedkeywords: ["defekt", "kaputt", "3d"],
     maxviableprice: Number(119.99),
@@ -104,7 +104,7 @@ db[collectionName].insertMany([
   {
     productname: "Ryzen 9 5900x",
     url: "https://www.kleinanzeigen.de/s-pc-zubehoer-software/preis:80:/ryzen-9-5900x/k0c225",
-    mostrecentlisting: new Date("2023-08-08T00:00:00Z"),
+    mostrecentlistingdate: new Date("2023-08-08T00:00:00Z"),
     requiredkeywords: ["5900x", "Ryzen"],
     blacklistedkeywords: ["defekt", "kaputt", "3d"],
     maxviableprice: Number(159.99),

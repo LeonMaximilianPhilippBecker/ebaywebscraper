@@ -1,6 +1,8 @@
 package com.leon.ebaywebscraper.dto;
 
 import java.time.LocalDateTime;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,18 +11,23 @@ import lombok.Data;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ProductListing {
 
-  private String listingUrl;
-  private LocalDateTime listingDate;
+  @NotNull
+  private String listingurl;
+  @NotNull
+  private LocalDateTime listingdate;
+  @NotNull
   private double price;
-  private boolean isBuyable;
+  @NotNull
+  @Min(value = 0)
+  private boolean isbuyable;
 
   @Override
   public String toString() {
     return "ProductListing{" +
-        "listingUrl='" + listingUrl + '\'' +
-        ", listingDate=" + listingDate +
+        "listingurl='" + listingurl + '\'' +
+        ", listingdate=" + listingdate +
         ", price=" + price +
-        ", isBuyable=" + isBuyable +
+        ", isbuyable=" + isbuyable +
         '}';
   }
 }

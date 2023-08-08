@@ -19,23 +19,28 @@ public class ProductController {
   @Autowired
   ProductRepository productRepository;
 
-  @PostMapping
+  @PostMapping(value = "/post/product/{product}")
   public Product createProduct(@PathVariable Product product) {
     return productRepository.insert(product);
   }
 
-  @GetMapping
+  @GetMapping(value = "/get/productlistings/{productname}")
   public List<ProductListing> getProductListingsByProductName(@PathVariable String productName) {
-    return productRepository.findProductByProductName(productName).getProductListings();
+    return productRepository.findProductByProductname(productName).getProductlistings();
   }
 
-  @GetMapping
+  @GetMapping(value = "/get/product/{product}")
   public Product getProductByName(@PathVariable String productName) {
-    return productRepository.findProductByProductName(productName);
+    return productRepository.findProductByProductname(productName);
   }
 
-  @DeleteMapping("/{productName}")
+  @GetMapping(value = "/get/products")
+  public List<Product> getProductListings() {
+    return productRepository.findAll();
+  }
+
+  @DeleteMapping(value = "/delete/productname/{productname}")
   public void deleteProductByName(@PathVariable String productName) {
-    productRepository.deleteByProductName(productName);
+    productRepository.deleteByProductname(productName);
   }
 }
