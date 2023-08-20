@@ -1,4 +1,4 @@
-# ebaywebscraper
+# ebaywebscraper (work in progress)
 This is a simple java application for receiving WhatsApp notifications about recently published offers on ebay Kleinanzeigen. You can freely configure a set of articles to get notified about.
 
 ### How to get started quickly
